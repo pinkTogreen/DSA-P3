@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 import { getResults } from "./lib/edamam";
 
 export default function Page() {
+  const [showInformation, setShowInformation] = useState(true);
+
   // Used to toggle the form to add a profile.
   // When it's true, the form will show. When it's false, the form will not.
   const [showAddProfile, setShowAddProfile] = useState(false);
@@ -49,6 +51,10 @@ export default function Page() {
           <span>Alana Belnavis-Walters</span>
         </div>
       </nav>
+      <button className={styles.collapseButton} onClick={e => {setShowInformation(!showInformation)}}>⌄ Project Information ⌄</button>
+      <InformationDisplay
+        isDisplayed={showInformation}
+      />
       <div className={styles.container}>
         <div className={styles.profileContainer}>
           <div className={styles.header}>
@@ -86,4 +92,26 @@ export default function Page() {
       </div>
     </section>
   );
+}
+
+function InformationDisplay({isDisplayed}) {
+  if (isDisplayed) {
+    return <div className={styles.projectInfo}>
+      <p className={styles.mainText}>
+          <b>Nutrition Nexus</b> is a program to search for the most compatible recipes for multiple people!
+          Each person's profile can specify food preferences, allergies, and dietary restrictions or diets.
+          Then you can generate the results with your profiles to get recipes which are best suited to all.
+          Add a profile to get started!
+      </p>
+      <p className={styles.subtext}>
+          This is a project by Alana Walters, Jaidyn Holt, and Hailey Pham <br></br>
+          for COP 3530 Data Structures and Algorithms, April 2024. <br></br>
+          <br></br>
+          It uses <a href="https://nextjs.org/" target="_blank">Next.js</a> bootstrapped with
+          <a href="https://github.com/vercel/next.js/tree/canary/packages/create-next-app" target="_blank">`create-next-app`</a>
+            and the <a href="https://developer.edamam.com/edamam-recipe-api" target="_blank">Edamam Recipe Search API</a>.
+      </p>
+    </div>
+  }
+  return <div></div>
 }

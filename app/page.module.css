@@ -48,8 +48,8 @@
 }
 
 .profileContainer h2 {
-  font-size: 17px;
-  font-weight: 500;
+	font-size: 17px;
+	font-weight: 500;
 }
 
 .header h2 {
@@ -182,4 +182,23 @@
 	text-align: center;
 	margin-bottom: 5px;
 	font-size: 12px;
+}
+
+.collapseButton {
+	font-size: 14px;
+	width: 100%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin: none;
+	border: none;
+	background: #a0b78dab;
+}
+
+.collapseButton:hover {
+	background: #c7d7b8ab;
+}
+
+.projectInfo {
+	padding: 10px;
+	background: #b2c99fab;
 }
