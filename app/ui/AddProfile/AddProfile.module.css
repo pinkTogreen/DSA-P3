@@ -1,30 +1,148 @@
-.profile label {
-    display: block;
+.container {
+    position: absolute;
+    width: 400px;
+    min-height: 400px;
+    background: #93b17a39;
+    padding: 30px;
+    border: 1px solid #93b17a;
+    backdrop-filter: blur(5px) saturate(2);
+    left: 0;
+    right: 0;
+    top: calc(50% - 200px);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    z-index: 10;
 }
 
-.profile input {
-    display: block;
-}
-
-.profile {
-    background: rgb(223, 223, 223);
-    width: 250px;
-    border-radius: 5px;
-    padding: 20px;
-}
-
-.profile button {
-    color: white;
-    padding: 5px 10px;
-    background: rgb(0, 157, 255);
-    border-radius: 5px;
-    outline: none;
-    border: none;
+.container h2 {
+    font-size: 17px;
     font-weight: 500;
+}
+
+.container h2 {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    column-gap: 5px;
+}
+
+.container svg {
+    width: 20px;
+    height: 20px;
+}
+
+.textInput {
+    display: flex;
+    flex-direction: column;
+}
+
+.textInput > label, .multipleInput > label  {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 7.5px;
+    display: block;
+}
+
+.textInput input {
+    font-size: 13px;
+    border: 1px solid rgba(128, 128, 128, 0.524);
+    border-radius: 4px;
+    padding: 5px 10px;
+    outline: none;
+}
+
+.textInput input:focus {
+    border: 2px solid black;
+}
+
+.checkboxContainer {
+    display: flex;
+    flex-direction: column;
+    max-height: 100px;
+    flex-wrap: wrap;
+    row-gap: 5px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    column-gap: 3px;
+}
+
+.checkbox > label {
+    font-weight: 400 !important;
+    font-size: 13px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+}
+
+.create {
+    background: #2b2b2b;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: white;
+    font-size: 13px;
     cursor: pointer;
 }
 
-.profile button:hover {
-    background: blue;
-    transition: 1s;
+.cancel {
+    background: #FFFFFFA0;
+    border: none;
+    padding: 7px 10px;
+    border-radius: 3px;
+    color: black;
+    border: 1px solid black;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.range {
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    margin-bottom: none;
+}
+
+.rangeInput {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.range > div {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.rangeInput > label {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: none;
+}
+
+.range > div > span {
+    /* background: red; */
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    /* background: white; */
+    border: 1px solid green;
+    font-weight: 500;
+    font-size: 10px;
+    color: green;
 }
