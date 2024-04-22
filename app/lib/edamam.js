@@ -5,7 +5,7 @@ const APP_ID = "90dadc9b";
 
 // Given the profiles, we are going to get the results
 // the results will initially be in JSON file.
-export const getResults = async (profiles, moreCalories = false, moreIngredients = false) => {
+export const getResults = async (profiles, moreCalories = false, moreIngredients = false, maxResults) => {
     const q = [];
     const diet = [];
     const health = [];
@@ -68,7 +68,7 @@ export const getResults = async (profiles, moreCalories = false, moreIngredients
     // Max number of recipes (should be multiple of 20).
     // If you want <= 120 results, set this value to 120.
     // And so on
-    const MAX_RESULTS = 20;
+    //const MAX_RESULTS = 20;
 
     // Stores all the recipes in an array.
     // NEW: We've introduced a weight to create more variety in the ranking vector.
@@ -97,7 +97,9 @@ export const getResults = async (profiles, moreCalories = false, moreIngredients
                 recipeRanking.push([recipe.label, 0, recipe]);
                 maxWeight = Math.max(maxWeight, rWeight);
             }
+            
         });
+
 
         console.log(result);
 
@@ -112,7 +114,7 @@ export const getResults = async (profiles, moreCalories = false, moreIngredients
             break;
         }
     }
-    while (allRecipes.length < MAX_RESULTS);
+    while (allRecipes.length < maxResults);
 
     // Normalize the weights
     allRecipes.forEach((recipe) => {

@@ -35,6 +35,7 @@ export default function Page() {
     // For the more/less calories, and more/less ingredients options
     const [moreCalories, setMoreCalories] = useState(true);
     const [moreIngredients, setMoreIngredients] = useState(false);
+    const [maxResults, setMaxResults] = useState(20);
 
     const [showInformation, setShowInformation] = useState(false);
 
@@ -75,7 +76,7 @@ export default function Page() {
             return;
         }
         const start = new Date();
-        const rankedRecipes = await getResults(profiles, moreCalories, moreIngredients);
+        const rankedRecipes = await getResults(profiles, moreCalories, moreIngredients, maxResults);
         const end = new Date();
         const millisecondsElapsed = end - start;
         setGenerationTime(millisecondsElapsed);
@@ -153,6 +154,14 @@ export default function Page() {
                     <div className={styles.buttonContainer}>
                         <button onClick={setShowAddProfile} className={styles.addButton}><p>Add Profile</p></button>
                         <button onClick={generateResults} className={styles.generateButton}><p>Generate Results</p></button>
+                        <div className={styles.numberInput}>
+                            <label>Enter maximum number of results per profile (multiple of 20)</label>
+                            <input className={styles.smallInputBox}
+                                value={maxResults}
+                                placeholder="Enter number"
+                                onChange={e => setMaxResults(e.target.value)}
+                            />
+                        </div>
                         {generationTime != null && <span>Generated results in {generationTime}ms</span>} <br></br>
                         {heapsortTime != null && <span>Heapsort in {heapsortTime}ms</span>} <br></br>
                         {mergesortTime != null && <span>Mergesort in {heapsortTime}ms</span>}
