@@ -164,7 +164,7 @@ export default function Page() {
                         </div>
                         {generationTime != null && <span>Generated results in {generationTime}ms</span>} <br></br>
                         {heapsortTime != null && <span>Heapsort in {heapsortTime}ms</span>} <br></br>
-                        {mergesortTime != null && <span>Mergesort in {heapsortTime}ms</span>}
+                        {mergesortTime != null && <span>Mergesort in {mergesortTime}ms</span>}
                     </div>
                 </div>
                 {/* Result Section */}
