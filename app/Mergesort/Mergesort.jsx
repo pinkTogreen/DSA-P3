@@ -10,8 +10,8 @@ export default function Mergesort(resultList) {
         n1 = m - l + 1;
         n2 = r - m;
 
-        L = new Array(n1);
-        R = new Array(n2);
+        let L = new Array(n1);
+        let R = new Array(n2);
 
         for (i = 0; i < n1; i++) {
             L[i] = arr[l+i];

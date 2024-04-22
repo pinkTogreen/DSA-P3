@@ -36,7 +36,7 @@ export default function Page() {
     const [moreCalories, setMoreCalories] = useState(true);
     const [moreIngredients, setMoreIngredients] = useState(false);
 
-    const [showInformation, setShowInformation] = useState(true);
+    const [showInformation, setShowInformation] = useState(false);
 
     const incrementIndex = () => {
         if (recipeIndex + 1 >= recipes.length) {
@@ -90,7 +90,7 @@ export default function Page() {
         setHeapsortTime(millisecondsElapsed2);
 
         const start3 = new Date();
-        //Mergesort(rankedRecipes);
+        Mergesort(rankedRecipes);
         const end3 = new Date();
         const millisecondsElapsed3 = end3 - start3;
         setMergesortTime(millisecondsElapsed3);
