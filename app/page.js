@@ -32,7 +32,7 @@ export default function Page() {
 
   const generateResults = () => {
     // get results: calls api to get results for every profile
-    getResults(profiles);
+    console.log(getResults(profiles));
 
     // sorts the results according to ratings and outputs them
     //Heapsort(ratedMap);

@@ -17,10 +17,10 @@ export default function AddProfile(props) {
     // The first value in the inner array represents the value that the API recognizes.
     // The second value in the inner array represents the value that we want to show to the screen.
     // For example: [[100, "strawberry"], [101, "oranges"]].
-    const dietTypes = [[0, "A"], [1, "B"], [2, "C"]]; //More kinds of diets and health types can be added later
+    const dietTypes = [[0, "low-carb"], [1, "low-sodium"], [2, "low-fat"], [3, "high-fiber"]]; //More kinds of diets and health types can be added later
 
     // This is the same as dietTypes, but for types of health.
-    const healthTypes = [[0, "A"], [1, "B"], [2, "C"]];
+    const healthTypes = [[4, "alcohol-free"], [5, "dairy-free"], [6, "gluten-free"], [7, "kosher"], [8, "paleo"], [9, "pescaterian"], [10, "vegan"], [11, "vegetarian"]];
 
     // This function will be called every time a single-value input (name, food) is changed.
     // This function will basically update the variable formData.

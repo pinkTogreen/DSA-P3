@@ -1,6 +1,4 @@
 import styles from './Heapsort.module.css';
-import jsonResponse from 'main/page.jsx';
-import { useState, useEffect } from 'react';
 
 // handle reading in the json results from api calls
 // storing them into an array data structure

@@ -10,10 +10,16 @@ export const getResults = async (profiles) => {
 
     for (const profile of Object.values(profiles)) {
         // Gathering up all the information
-        q.push(...[profile["food"]]);
-        diet.push(...profile["diet"]);
-        health.push(...profile["health"]);
+        q.push(...profile["food"]);
+        // pushing the names of the diets and health (the second element in the subarrays)
+        for (const dietGrouping of profile["diet"]) {
+            diet.push(dietGrouping[1]);
+        }
+        for (const healthGrouping of profile["health"]) {
+            health.push(healthGrouping[1]);
+        }
     }
+    
 
     // Creating the parameters for the URL
     const parameters = {
@@ -55,10 +61,12 @@ export const getResults = async (profiles) => {
 
     // returns the map from the setRatings function
     return TestParsingJSON(result);
+
     //return SetRatings(result, q, diet, health);
 }
 
 function TestParsingJSON(resultsObj) {
+    return resultsObj.from;
     const section = document.querySelector("section");
     const recipes = resultsObj;
 
