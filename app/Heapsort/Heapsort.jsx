@@ -3,39 +3,40 @@ import styles from './Heapsort.module.css';
 // takes in the array of [recipe objects, rank]
 // sort them inplace with heapsort
 export default function Heapsort(resultList) {
-    // console.log(resultList);
-    // return;
-
     if (resultList.length == 0) {
-        // console.log("result list is invalid");
+        console.log("result list is invalid");
         return;
     }
 
+    console.log("The initial parameter:", resultList);
+
+    // first make a deep copy of the resultList
     let sortedArr = resultList.map(arr => [...arr]);
-    
-    let n = sortedArr.length;
-    // console.log("Before Recipe Sorting", sortedArr);
-    // console.log("number of elements in resultList: ", sortedArr.length);
-    // first heapify the array:
-    // takes in an array and turns it into a max heap
+
+    // declare the size of the resultList into variable and a changable size variable
+    let size = resultList.length;
+    let n = resultList.length;
+
+    // heapify the array into a min heap
     // by calling heapify down on all internal nodes (floor(n/2) to n-1) in reverse level order
-    for (let j = Math.floor(sortedArr.length / 2) - 1; j >= 0; j--) {
-        heapifyDown(sortedArr, j, sortedArr.length);
+    for (let i = Math.floor(size / 2) - 1; i >= 0; i--) {
+        heapifyDown(sortedArr, i, size);
     }
 
+    // then extract min on all elements, update n during process
+    // so the list will be sorted in descending order with largest rating on top
+    while (n > 0) {
 
-    // then extract max on all elements, update n during process
-    for (let i = 0; i < sortedArr.length; i++) {
-        n = sortedArr.length - i;
         // swap top and last
-        // console.log(sortedArr);
-        let temp = sortedArr[i];
-        sortedArr[i] = sortedArr[n-1];
+        const temp = sortedArr[0];
+        sortedArr[0] = sortedArr[n-1];
         sortedArr[n-1] = temp;
-        // console.log(sortedArr);
+
+        // decrement the size variable n
+        n--;
+
         // heapify the new top down (with n-1 elements now)
-        heapifyDown(sortedArr, i, n-1);
-        // n--;    //decrement n
+        heapifyDown(sortedArr, 0, n);
     }
 
     // return the results displayed in the sorted order
@@ -46,18 +47,17 @@ export default function Heapsort(resultList) {
 // heapify down function
 // takes in the root index of the heap and heapifies it down
 function heapifyDown(results, index, numElements) {
-    // while the index is not a leaf
     while (true) {
-        // console.log("index: ", index);
+        console.log("Now heapifying index: ", index, results[index][0]);
         // console.log("rating for element: ", results[index][1]);
         // check if left child and right child exists, if so compare them and swap with the largest
         if ((2 * index) + 1 < numElements && (2 * index) + 2 < numElements) {
             // compare the children to find largest child
-            // if left child is larger than right
+            // if left child is smaller than or equal to right
             // console.log(" two children: ", 2*index+1, results[(2 * index) + 1][1], 2*index+2, results[(2 * index) + 2][1]);
-            if (results[(2 * index) + 1][1] >= results[(2 * index) + 2][1]) {
-                // if left larger than right, compare left with index, if left larger, swap
-                if (results[(2 * index) + 1][1] > results[index][1]) {
+            if (results[(2 * index) + 1][1] <= results[(2 * index) + 2][1]) {
+                // if left smaller than right, compare left with index, if left smaller, swap
+                if (results[(2 * index) + 1][1] < results[index][1]) {
                     // swap
                     // console.log("Swap with left")
                     let temp = results[index];
@@ -68,10 +68,10 @@ function heapifyDown(results, index, numElements) {
                     continue;
                 }
             }
-            // if right child is larger than left
-            if (results[(2 * index) + 1][1] < results[(2 * index) + 2][1]) {
-                // compare right with index, if right larger, swap
-                if (results[(2 * index) + 2][1] > results[index][1]) {
+            // if right child is smaller than left
+            if (results[(2 * index) + 1][1] > results[(2 * index) + 2][1]) {
+                // compare right with index, if right smaller, swap
+                if (results[(2 * index) + 2][1] < results[index][1]) {
                     // swap
                     // console.log("swap with right");
                     let temp = results[index];
@@ -86,7 +86,7 @@ function heapifyDown(results, index, numElements) {
         }
         // otherwise there exists no children or only 1 child
         // swap with left or right or none
-        if ((2 * index) + 1 < numElements && results[(2 * index) + 1][1] > results[index][1]) {
+        if ((2 * index) + 1 < numElements && results[(2 * index) + 1][1] < results[index][1]) {
             // swap
             // console.log("one child left: ", 2*index+1, results[(2 * index) + 1][1]);
             let temp = results[index];
@@ -96,7 +96,7 @@ function heapifyDown(results, index, numElements) {
             index = (2 * index) + 1;
             continue;
         }
-        if ((2 * index) + 2 < numElements && results[(2 * index) + 2][1] > results[index][1]) {
+        if ((2 * index) + 2 < numElements && results[(2 * index) + 2][1] < results[index][1]) {
             // swap
             // console.log("One child right: ", 2*index+2, results[(2 * index) + 1][1]);
             let temp = results[index];

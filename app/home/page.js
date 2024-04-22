@@ -91,7 +91,7 @@ export default function Page() {
         setHeapsortTime(millisecondsElapsed2);
 
         const start3 = new Date();
-        const mergesortedResults = Mergesort(rankedRecipes);
+        //const mergesortedResults = Mergesort(rankedRecipes);
         const end3 = new Date();
         const millisecondsElapsed3 = end3 - start3;
         setMergesortTime(millisecondsElapsed3);
@@ -107,7 +107,7 @@ export default function Page() {
             {/* Navigation Bar */}
             <nav className={styles.nav}>
                 <div>
-                    <span>Nutrient Nexus</span>
+                    <span>Nutrition Nexus</span>
                 </div>
                 <div>
                     <span>Alana BW</span>
