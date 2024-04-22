@@ -352,14 +352,30 @@
 
 .numberInput {
     border: none;
-    font-size: 10px;
+    font-size: 13px;
     background: white;
     padding: 10px;
-    border-radius: 12px 12px 12px 12px;
-    width: 80%;
+    border-radius: 10px;
+    width: 100%;
+    border: 1px solid rgba(128, 128, 128, 0.541);
+    box-shadow: 0 0 0 5px rgba(128, 128, 128, 0.111);
     align-self: center;
+    font-weight: 500;
 }
 
-.smallInputBox input{
-    border-radius: 12px 12px 12px 12px;
+.numberInput label {
+    margin-bottom: 5px;
+    display: block;
+}
+
+.smallInputBox {
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid rgba(128, 128, 128, 0.541);
+    display: block;
+    padding: 5px 10px;
+}
+
+.smallInputBox:focus {
+    border-color: var(--green);
 }

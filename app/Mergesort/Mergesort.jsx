@@ -6,7 +6,7 @@ import styles from './Mergesort.module.css';
 export default function Mergesort(resultList) {
 
     // merges two arrays
-    function merge(arr, l, m, r) {
+    function merge(arr, l, m, r) { 
         n1 = m - l + 1;
         n2 = r - m;
 

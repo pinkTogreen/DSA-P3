@@ -28,14 +28,14 @@ export default function Page() {
   }
 
   useEffect(() => {
-    console.log(profiles);
+    // console.log(profiles);
   }, [profiles]);
 
   const generateResults = () => {
     // get results: calls api to get results for every profile
     resultMap = getResults(profiles, maxNum);
 
-    console.log(resultMap);
+    // console.log(resultMap);
     // sorts the results according to ratings and outputs them
     Heapsort(resultMap);
     Mergesort(resultMap);
@@ -43,7 +43,7 @@ export default function Page() {
   }
 
   useEffect(() => {
-    console.log(editProfileName);
+    // console.log(editProfileName);
   }, [editProfileName])
 
   return (

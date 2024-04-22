@@ -45,20 +45,20 @@ export default function Page() { // entry point
         }
 
     
-        console.log(URL); // just for testing
+        // console.log(URL); // just for testing
 
         const response = await fetch(URL); // "await" keyword prevents successive code from executing while we are making the API requests
         let result = await response.json();
-        console.log(result); // just for testing, prints the response to the console
+        // console.log(result); // just for testing, prints the response to the console
         
 
         while (true) {
             if (Object.hasOwn(result, "_links") && Object.hasOwn(result["_links"], "next")) {
-                console.log(result["_links"]["next"]);
+                // console.log(result["_links"]["next"]);
                 let _response = await fetch(result["_links"]["next"]["href"]);
                 let _result = await _response.json();
                 result = _result;
-                console.log(result);
+                // console.log(result);
             }
             else {
                 break;
@@ -68,7 +68,7 @@ export default function Page() { // entry point
     }
 
     useEffect(() => { // gets input from the site and records it in the profiles
-        console.log(profiles);
+        // console.log(profiles);
     }, [profiles]);
 
     return ( // the page we return

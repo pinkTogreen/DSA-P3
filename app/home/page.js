@@ -83,20 +83,20 @@ export default function Page() {
 
         // This is where the sorting would come in.
         // Like we'd sort it by the ranks (second element in the index).
-        // To find out more, check the console.log.
+        // To find out more, check the // console.log.
         const start2 = new Date();
-        Heapsort(rankedRecipes);
+        const heapsortedResults = Heapsort(rankedRecipes);
         const end2 = new Date();
         const millisecondsElapsed2 = end2 - start2;
         setHeapsortTime(millisecondsElapsed2);
 
         const start3 = new Date();
-        Mergesort(rankedRecipes);
+        const mergesortedResults = Mergesort(rankedRecipes);
         const end3 = new Date();
         const millisecondsElapsed3 = end3 - start3;
         setMergesortTime(millisecondsElapsed3);
 
-        console.log("After Recipe Sorting", rankedRecipes);
+        // // console.log("After Recipe Sorting", rankedRecipes);
         // Finally, display results to the screen
         setRecipes(rankedRecipes);
     }
@@ -151,17 +151,17 @@ export default function Page() {
                         <label className={moreIngredients ? styles.selectedOption : ""} onClick={e => setMoreIngredients(true)}>More Ingredients</label>
                         <label className={!moreIngredients ? styles.selectedOption : ""} onClick={e => setMoreIngredients(false)}>Less Ingredients</label>
                     </div>
-                    <div className={styles.buttonContainer}>
-                        <button onClick={setShowAddProfile} className={styles.addButton}><p>Add Profile</p></button>
-                        <button onClick={generateResults} className={styles.generateButton}><p>Generate Results</p></button>
-                        <div className={styles.numberInput}>
-                            <label>Enter maximum number of results per profile (multiple of 20)</label>
+                    <div className={styles.numberInput}>
+                            <label>Maximum Number of Recipes (Multiple of 20)</label>
                             <input className={styles.smallInputBox}
                                 value={maxResults}
                                 placeholder="Enter number"
                                 onChange={e => setMaxResults(e.target.value)}
                             />
                         </div>
+                    <div className={styles.buttonContainer}>
+                        <button onClick={setShowAddProfile} className={styles.addButton}><p>Add Profile</p></button>
+                        <button onClick={generateResults} className={styles.generateButton}><p>Generate Results</p></button>
                         {generationTime != null && <span>Generated results in {generationTime}ms</span>} <br></br>
                         {heapsortTime != null && <span>Heapsort in {heapsortTime}ms</span>} <br></br>
                         {mergesortTime != null && <span>Mergesort in {heapsortTime}ms</span>}

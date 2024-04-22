@@ -2,11 +2,11 @@ import styles from './Profile.module.css';
 import { useEffect } from 'react';
 export default function Profile(props) {
     useEffect(() => {
-        console.log("Profile Info: ", props);
+        // console.log("Profile Info: ", props);
     }, []);
 
     const handleEdit = (e) => {
-        console.log("ABC");
+        // console.log("ABC");
         props.edit();
     }
 

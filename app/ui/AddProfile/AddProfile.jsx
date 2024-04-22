@@ -105,7 +105,7 @@ export default function AddProfile(props) {
 
     // Anytime the formData variable changes, it will be logged to the console (look in your browser).
     useEffect(() => {
-        console.log(formData);
+        // console.log(formData);
     }, [formData]);
 
     // When editing a profile.

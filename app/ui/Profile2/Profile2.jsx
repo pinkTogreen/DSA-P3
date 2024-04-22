@@ -6,7 +6,7 @@ export default function Profile2(props) {
     }
 
     useEffect(() => {
-        console.log(props);
+        // console.log(props);
     }, []);
     
     return (

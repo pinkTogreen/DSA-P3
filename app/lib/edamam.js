@@ -63,7 +63,7 @@ export const getResults = async (profiles, moreCalories = false, moreIngredients
             URL += `&${key}=${parameters[key]}`;
         }
     }
-    console.log("URL: " + URL);
+    // console.log("URL: " + URL);
 
     // Max number of recipes (should be multiple of 20).
     // If you want <= 120 results, set this value to 120.
@@ -101,7 +101,7 @@ export const getResults = async (profiles, moreCalories = false, moreIngredients
         });
 
 
-        console.log(result);
+        // console.log(result);
 
         // Get Next 20 Recipes
         // After this executes, the URL will be updated, the while loop will (unless we've reached max already) loop again
@@ -121,11 +121,11 @@ export const getResults = async (profiles, moreCalories = false, moreIngredients
         recipe[3] = (recipe[3] / maxWeight) * 100;
     });
 
-    console.log("All Recipes", allRecipes);
-    console.log("Recipe Ranking Before", recipeRanking);
-    console.log("User Diet Labels", userDietLabels);
-    console.log("User Health Labels", userHealthLabels);
-    console.log("Profiles", profiles);
+    // console.log("All Recipes", allRecipes);
+    // console.log("Recipe Ranking Before", recipeRanking);
+    // console.log("User Diet Labels", userDietLabels);
+    // console.log("User Health Labels", userHealthLabels);
+    // console.log("Profiles", profiles);
 
     // Creating the Ratings Vector
     // Each recipe is initialized to a value of 0.
@@ -174,7 +174,7 @@ export const getResults = async (profiles, moreCalories = false, moreIngredients
         }
     }
 
-    console.log("After Recipe Ranking", recipeRanking);
+    // console.log("After Recipe Ranking", recipeRanking);
     // We return the recipe ranking to the merge sort or heap sort function
     // to be sorted. Then we show it to the screen.
     return recipeRanking;
