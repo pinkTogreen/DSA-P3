@@ -25,7 +25,7 @@ export default function Mergesort(resultList) {
         k = l;
 
         while(i < n1 && j < n2) {
-            if(L[i] <= R[j]) {
+            if(L[i][1] <= R[j][1]) {
                 arr[k] = L[i];
                 i++;
             }
@@ -50,7 +50,7 @@ export default function Mergesort(resultList) {
     } 
 
     function mergeSort(arr, l, r) {
-        if (l <= r) {
+        if (l >= r) {
             return;
         }
         var m = 1 + parseInt(r-1/2);
