@@ -39,7 +39,7 @@ export default function AddProfile(props) {
         ["fish-free", "Fish-Free"],
         ["gluten-free", "Gluten-Free"],
         ["peanut-free", "Peanut-Free"],
-        ["read-meat-free", "Read-Meat-Free"],
+        ["read-meat-free", "Red-Meat-Free"],
         ["vegan", "Vegan"],
         ["vegetarian", "Vegetarian"]
     ];
