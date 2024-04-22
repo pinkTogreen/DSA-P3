@@ -9,6 +9,7 @@ import Heapsort from "./Heapsort/Heapsort";
 import Mergesort from "./Mergesort/Mergesort";
 
 export default function Page() {
+  const [maxNum, setMaxNum] = useState(20);
   const [showInformation, setShowInformation] = useState(true);
 
   // Used to toggle the form to add a profile.
@@ -32,11 +33,11 @@ export default function Page() {
 
   const generateResults = () => {
     // get results: calls api to get results for every profile
-    console.log(getResults(profiles));
+    resultMap = getResults(profiles, maxNum);
 
     // sorts the results according to ratings and outputs them
-    //Heapsort(ratedMap);
-    //Mergesort(ratedMap);
+    Heapsort(resultMap);
+    Mergesort(resultMap);
 
   }
 
@@ -86,6 +87,10 @@ export default function Page() {
           <button onClick={generateResults} className={styles.launch}>
             <label>Launch</label>
           </button>
+          <div className={styles.textInput}>
+            <label>Maximum number of results per profile</label>
+            <input required onChange={e => setMaxNum(e.target.value)} value={maxNum} placeholder="Enter maximum number of results per profile" type="text"/>
+          </div>
         </div>
         <div className={styles.result}>
           <div>
