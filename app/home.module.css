@@ -1,0 +1,350 @@
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--gray);
+    padding: 15px 30px;
+    height: 50px;
+    background: white;
+}
+
+.nav > div {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    background: white;
+}
+
+.nav > div:nth-child(1) span {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--green2);
+    transform: scaleY(0.95);
+}
+
+.nav > div:nth-child(2) span {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.body {
+    display: grid;
+    grid-template-columns: min-content auto;
+    min-height: calc(100vh - 50px);
+}
+
+.sidebar {
+    background: rgb(240, 240, 240);
+    padding: 10px 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    border-right: 1px solid rgba(128, 128, 128, 0.25);
+}
+
+.header {
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+}
+
+.profileMessage {
+    border: 1px solid rgba(0, 0, 0, 0.236);
+    border-radius: var(--bradius);
+    padding: 50px 30px;
+    width: min-content;
+    background: var(--white);
+    box-shadow: 0 0 0px 5px #80808021;
+}
+
+.profileMessage p:first-child {
+    font-size: 13px;
+    color: var(--green2);
+    font-weight: 500;
+}
+
+.profileMessage p {
+    font-size: 12px;
+    font-weight: 400;
+    color: #65626291;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.profileWrapper > div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.profileContainer > div {
+    background: white;
+    width: 250px;
+    border-radius: var(--bradius);
+    border: 1px solid var(--green2);
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 0px 0px 5px #80808021;
+}
+
+.profileContainer > div:hover {
+    border-color: var(--green);
+    transition: 0.25s;
+}
+
+.profileContainer > div:hover h4 {
+    background: var(--green);
+    transition: 0.25s;
+}
+
+.profileContainer h4 {
+    background: var(--green2);
+    color: white;
+    font-weight: 500;
+    font-size: 13px;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 9px 9px 0 0;
+}
+
+.profileContainer > div > div {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.profileContainer > div > div > div h5 {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.profileContainer > div > div > div p {
+    font-weight: 400;
+    font-size: 13px;
+    color: rgb(106, 103, 103);
+}
+
+.addButton, .generateButton {
+    padding: 10px 15px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    transition: 0.25s;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.buttonContainer span {
+    font-weight: 500;
+    color: gray;
+    font-size: 10px;
+    text-align: center;
+}
+
+.buttonContainer p {
+    display: block;
+    font-weight: bolder;
+}
+
+.buttonContainer button {
+    cursor: pointer;   
+}
+
+.buttonContainer button:hover {
+    transition: 0.25s;
+    background: var(--green);
+}
+
+.generateButton {
+    border: 1px solid var(--green2);
+}
+
+.generateButton:hover {
+    color: white;
+    border-color: var(--green);
+}
+
+.buttonContainer p {
+    font-weight: 500 !important;
+    font-size: 13px;
+}
+
+.addButton {
+    background: var(--green2);
+    color: white;
+}
+
+.generateButton {
+    background: white;
+    color: var(--green2);
+}
+
+.outputContainer {
+    background: url("/Background2.png");
+	background-size: cover;
+    padding: 60px 30px 30px 30px;
+}
+
+.result {
+    background: var(--white);
+    width: 500px;
+    border-radius: var(--bradius);
+    box-shadow: 0 0 0px 10px rgba(66, 171, 82, 0.229);
+    padding: 30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.result h3 {
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-size: 25px;   
+    text-align: center;
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.recipe {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.recipeView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+}
+
+.recipeView h4 {
+    font-family: "Kanit", sans-serif;
+    font-weight: 500;
+    font-size: 15px;   
+    text-transform: uppercase;
+    color: var(--green2);
+}
+
+.recipeView span {
+    /* font-family: "Kanit", sans-serif; */
+    font-weight: 600;
+    font-size: 12px;   
+    text-transform: uppercase;
+    color: var(--green2);
+}
+
+.recipe div:has(svg) svg {
+    stroke: black;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.recipe div:has(svg):hover svg {
+    stroke: var(--green2);
+    transition: 0.25s;
+}
+
+.recipe img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.recipeInformation::before {
+    position: absolute;
+    top: -0px;
+    left: 0;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    border-radius: 10px;
+    background: #24933c59;
+}
+
+.recipeInformation {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    row-gap: 2px;
+}
+
+.recipeInformation h5 {
+    font-weight: 500;
+    font-size: 13px; 
+}
+
+.recipeInformation p {
+    font-weight: 400;
+    font-size: 13px;
+    color: gray;
+}
+
+.options {
+    border: 1px solid var(--green2);
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* min-height: 40px; */
+}
+
+.options label {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    height: 100%;
+    font-size: 12px;
+    background: var(--white);
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.options label:hover {
+    background: rgba(41, 255, 41, 0.236);
+    transition: 0.15s;
+}
+
+.options > label:first-child {
+    border-radius: 9px 0px 0px 9px;
+}
+
+.options > label:nth-child(2) {
+    border-radius: 0px 9px 9px 0px;
+}
+
+.options label.selectedOption {
+    background: var(--green2);
+    color: white;
+}
+
+.collapseButton {
+	font-size: 14px;
+	width: 100%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin: none;
+	border: none;
+	background: #a0b78dab;
+}
+
+.collapseButton:hover {
+	background: #c7d7b8ab;
+}
+
+.projectInfo {
+	padding: 10px;
+	background: #b2c99fab;
+}

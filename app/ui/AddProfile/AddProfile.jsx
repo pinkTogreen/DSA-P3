@@ -17,10 +17,32 @@ export default function AddProfile(props) {
     // The first value in the inner array represents the value that the API recognizes.
     // The second value in the inner array represents the value that we want to show to the screen.
     // For example: [[100, "strawberry"], [101, "oranges"]].
-    const dietTypes = [[0, "low-carb"], [1, "low-sodium"], [2, "low-fat"], [3, "high-fiber"]]; //More kinds of diets and health types can be added later
+    // https://developer.edamam.com/edamam-docs-recipe-api
+    const dietTypes = [
+        ["balanced", "Balanced"], 
+        ["high-fiber", "High-Fiber"], 
+        ["high-protein", "High-Protein"], 
+        ["low-carb", "Low-Carb"], 
+        ["low-fat", "Low-Fat"], 
+        ["low-sodium", "Low-Sodium"]
+    ];
 
     // This is the same as dietTypes, but for types of health.
-    const healthTypes = [[4, "alcohol-free"], [5, "dairy-free"], [6, "gluten-free"], [7, "kosher"], [8, "paleo"], [9, "pescaterian"], [10, "vegan"], [11, "vegetarian"]];
+    // There's a lot of health types and I do not feel like typing everything out.
+    // Feel free to add in the rest. I've added what I believe to be the most popular.
+    // https://developer.edamam.com/edamam-docs-recipe-api
+    const healthTypes = [
+        ["alcohol-free", "Alcohol-Free"], 
+        ["dairy-free", "Dairy-Free"], 
+        ["DASH", "DASH"],
+        ["egg-free", "Egg-Free"],
+        ["fish-free", "Fish-Free"],
+        ["gluten-free", "Gluten-Free"],
+        ["peanut-free", "Peanut-Free"],
+        ["read-meat-free", "Read-Meat-Free"],
+        ["vegan", "Vegan"],
+        ["vegetarian", "Vegetarian"]
+    ];
 
     // This function will be called every time a single-value input (name, food) is changed.
     // This function will basically update the variable formData.
@@ -75,6 +97,12 @@ export default function AddProfile(props) {
         props.close(false);
     }
 
+    // Delete a profile, felt like this was nice to have.
+    const deleteProfile = (event) => {
+        props.deleteProfile(formData["name"]);
+        props.close(false);
+    }
+
     // Anytime the formData variable changes, it will be logged to the console (look in your browser).
     useEffect(() => {
         console.log(formData);
@@ -90,11 +118,11 @@ export default function AddProfile(props) {
     return (
         <div className={styles.container}>
             <h2>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
-                    <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
-                    <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+                {props.data != null ? `Edit ${formData["name"]}'s` : "Add"} Profile
+                <svg onClick={deleteProfile} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
                 </svg>
-                {props.data != null ? `Edit ${formData["name"]}` : "Add"} Profile
             </h2>
             <div className={styles.textInput}>
                 <label>Name</label>
@@ -166,8 +194,8 @@ export default function AddProfile(props) {
             }
             
             <div className={styles.buttons}>
-                <button onClick={e => addProfile(e)} className={styles.create}>{props.data != null ? `Save` : "Add"}</button>
-                <button className={styles.cancel} onClick={e => props.close(false)}>Cancel</button>
+                <button onClick={e => addProfile(e)} className={styles.create}><p>{props.data != null ? `Save` : "Add"}</p></button>
+                <button className={styles.cancel} onClick={e => props.close(false)}><p>Cancel</p></button>
             </div>
         </div>
     )
