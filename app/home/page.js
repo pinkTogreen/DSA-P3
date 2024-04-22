@@ -85,13 +85,13 @@ export default function Page() {
         // Like we'd sort it by the ranks (second element in the index).
         // To find out more, check the console.log.
         const start2 = new Date();
-        //Heapsort(rankedRecipes);
+        Heapsort(rankedRecipes);
         const end2 = new Date();
         const millisecondsElapsed2 = end2 - start2;
         setHeapsortTime(millisecondsElapsed2);
 
         const start3 = new Date();
-        //Mergesort(rankedRecipes);
+        Mergesort(rankedRecipes);
         const end3 = new Date();
         const millisecondsElapsed3 = end3 - start3;
         setMergesortTime(millisecondsElapsed3);
