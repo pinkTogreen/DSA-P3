@@ -63,12 +63,6 @@ export const getResults = async (profiles, moreCalories = false, moreIngredients
             URL += `&${key}=${parameters[key]}`;
         }
     }
-    // console.log("URL: " + URL);
-
-    // Max number of recipes (should be multiple of 20).
-    // If you want <= 120 results, set this value to 120.
-    // And so on
-    //const MAX_RESULTS = 20;
 
     // Stores all the recipes in an array.
     // NEW: We've introduced a weight to create more variety in the ranking vector.
@@ -99,9 +93,6 @@ export const getResults = async (profiles, moreCalories = false, moreIngredients
             }
             
         });
-
-
-        // console.log(result);
 
         // Get Next 20 Recipes
         // After this executes, the URL will be updated, the while loop will (unless we've reached max already) loop again
@@ -174,7 +165,6 @@ export const getResults = async (profiles, moreCalories = false, moreIngredients
         }
     }
 
-    // console.log("After Recipe Ranking", recipeRanking);
     // We return the recipe ranking to the merge sort or heap sort function
     // to be sorted. Then we show it to the screen.
     return recipeRanking;

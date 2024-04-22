@@ -75,6 +75,7 @@ export default function Page() {
             alert("Please enter at least one profile to generate results.");
             return;
         }
+        // This is where edamam.js is called to get the results from the API and return the rated nested array
         const start = new Date();
         const rankedRecipes = await getResults(profiles, moreCalories, moreIngredients, maxResults);
         const end = new Date();
@@ -83,7 +84,6 @@ export default function Page() {
 
         // This is where the sorting would come in.
         // Like we'd sort it by the ranks (second element in the index).
-        // To find out more, check the // console.log.
         const start2 = new Date();
         const heapsortedResults = Heapsort(rankedRecipes);
         const end2 = new Date();
@@ -91,14 +91,13 @@ export default function Page() {
         setHeapsortTime(millisecondsElapsed2);
 
         const start3 = new Date();
-        //const mergesortedResults = Mergesort(rankedRecipes);
+        const mergesortedResults = Mergesort(rankedRecipes);
         const end3 = new Date();
         const millisecondsElapsed3 = end3 - start3;
         setMergesortTime(millisecondsElapsed3);
 
-        // // console.log("After Recipe Sorting", rankedRecipes);
         // Finally, display results to the screen
-        setRecipes(rankedRecipes);
+        setRecipes(heapsortedResults);
     }
 
     return (
@@ -196,6 +195,8 @@ export default function Page() {
                             <p>Ingredients: {recipes[recipeIndex] != null && recipes[recipeIndex][2].ingredientLines.join(", ")}</p>
                             <p>Diet Labels: {recipes[recipeIndex] != null && recipes[recipeIndex][2].dietLabels.join(", ")}</p>
                             <p>Health Labels: {recipes[recipeIndex] != null && recipes[recipeIndex][2].healthLabels.join(", ")}</p>
+                            <br></br>
+                            <p>Compatibility Rating: {recipes[recipeIndex] != null && recipes[recipeIndex][1]}</p>
                         </div>
                     </div>
                     }

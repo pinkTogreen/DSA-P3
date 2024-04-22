@@ -9,7 +9,6 @@ export default function Mergesort(resultList) {
     }
 
     let mergeSortedArr = resultList.map(arr => [...arr]);
-    console.log("Merge Sorted Array: ", mergeSortedArr);
     
     // merge two arrays
     function merge(arr, l, m, r) {
@@ -72,7 +71,7 @@ export default function Mergesort(resultList) {
 
     // return the results displayed in the sorted order
     mergeSort(mergeSortedArr, 0, mergeSortedArr.length-1);
-    console.log("MERGE SORT");
-    console.log("Merge Sorted Array: ", mergeSortedArr);
+    console.log("Mergesort complete");
+    console.log(mergeSortedArr);
     return mergeSortedArr;    // merges two arrays
 }
