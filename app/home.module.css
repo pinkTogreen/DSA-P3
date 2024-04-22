@@ -331,20 +331,35 @@
 }
 
 .collapseButton {
-	font-size: 14px;
+	font-size: 12px;
 	width: 100%;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	margin: none;
 	border: none;
-	background: #a0b78dab;
+	background: var(--green2);
 }
 
 .collapseButton:hover {
-	background: #c7d7b8ab;
+	background: var(--green);
 }
 
 .projectInfo {
-	padding: 10px;
-	background: #b2c99fab;
+	padding: 12px;
+    font-size: 10px;
+	background: var(--green);
+}
+
+.numberInput {
+    border: none;
+    font-size: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 12px 12px 12px 12px;
+    width: 80%;
+    align-self: center;
+}
+
+.smallInputBox input{
+    border-radius: 12px 12px 12px 12px;
 }
