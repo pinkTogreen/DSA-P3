@@ -4,8 +4,14 @@ import styles from './Mergesort.module.css';
 // storing them into an array data structure
 // sorting them with mergesort
 export default function Mergesort(resultList) {
+    if (resultList.length == 0) {
+        // console.log("result list is invalid");
+        return;
+    }
 
-    // merges two arrays
+    let mergeSortedArr = resultList.map(arr => [...arr]);
+    console.log("Merge Sorted Array: ", mergeSortedArr);
+    
     function merge(arr, l, m, r) {
         var n1 = parseInt(m) - l +1;
         var n2 = r-m;
@@ -62,5 +68,8 @@ export default function Mergesort(resultList) {
     }
 
     // return the results displayed in the sorted order
-    return mergeSort(resultList, 0, resultList.length-1);
+    mergeSort(mergeSortedArr, 0, mergeSortedArr.length-1);
+    console.log("Merge Sorted Array: ", mergeSortedArr);
+    return mergeSortedArr;    // merges two arrays
+    // return mergeSort(resultList, 0, resultList.length-1);
 }
