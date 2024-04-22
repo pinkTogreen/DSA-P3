@@ -4,7 +4,9 @@ import styles from "./page.module.css";
 import Profile from "./ui/Profile/Profile";
 import AddProfile from "./ui/AddProfile/AddProfile";
 import { useState, useEffect } from "react";
-import { getResults } from "./lib/edamam";
+import { getResults, setRatings } from "./lib/edamam";
+import Heapsort from "./Heapsort/Heapsort";
+import Mergesort from "./Mergesort/Mergesort";
 
 export default function Page() {
   const [showInformation, setShowInformation] = useState(true);
@@ -29,7 +31,13 @@ export default function Page() {
   }, [profiles]);
 
   const generateResults = () => {
+    // get results: calls api to get results for every profile
     getResults(profiles);
+
+    // sorts the results according to ratings and outputs them
+    //Heapsort(ratedMap);
+    //Mergesort(ratedMap);
+
   }
 
   useEffect(() => {
@@ -51,10 +59,13 @@ export default function Page() {
           <span>Alana Belnavis-Walters</span>
         </div>
       </nav>
+
+      {/* Display the project information with button for toggling */}
       <button className={styles.collapseButton} onClick={e => {setShowInformation(!showInformation)}}>⌄ Project Information ⌄</button>
       <InformationDisplay
         isDisplayed={showInformation}
       />
+      
       <div className={styles.container}>
         <div className={styles.profileContainer}>
           <div className={styles.header}>
