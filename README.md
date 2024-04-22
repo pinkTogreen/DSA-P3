@@ -1,6 +1,6 @@
 ## Project Information
 
-The Nutrition Nexus is a project by Alana Walters, Jaidyn Holt, and Hailey Pham for COP3530 Data Structures and Algorithms, April 2024. The program is a web-based [next.js](https://nextjs.org/) program bootstrapped with [‘create-next-app’](https://github.com/vercel/next.js/tree/canary/packages/create-next-app),  written in javascript, javascript XML (the React extension to javascript allowing HTML), and CSS. This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The Nutrition Nexus is a project by Alana Walters, Jaidyn Holt, and Hailey Pham for COP3530 Data Structures and Algorithms, April 2024. The program is a web-based [next.js](https://nextjs.org/) program bootstrapped with ['create-next-app'](https://github.com/vercel/next.js/tree/canary/packages/create-next-app),  written in javascript, javascript XML (the React extension to javascript allowing HTML), and CSS. This project uses ['next/font'](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 
 ## About
