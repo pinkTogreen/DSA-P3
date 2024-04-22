@@ -14,7 +14,7 @@ export default function Page() {
     const [showAddProfile, setShowAddProfile] = useState(false);
 
     // Contains an array of objects that represent profiles.
-    const [profiles, setProfiles] = useState({});
+    const [profiles, setProfiles] = useState([]);
 
     // Contains the name of the profile to be edited
     const [editProfileName, setEditProfileName] = useState("");
@@ -70,6 +70,10 @@ export default function Page() {
 
     // Function called when the user presses the generate result button.
     const generateResults = async () => {
+        if (profiles.length == 0) {
+            alert("Please enter at least one profile to generate results.");
+            return;
+        }
         const start = new Date();
         const rankedRecipes = await getResults(profiles, moreCalories, moreIngredients);
         const end = new Date();
@@ -80,7 +84,7 @@ export default function Page() {
         // Like we'd sort it by the ranks (second element in the index).
         // To find out more, check the console.log.
         const start2 = new Date();
-        //Heapsort(rankedRecipes);
+        Heapsort(rankedRecipes);
         const end2 = new Date();
         const millisecondsElapsed2 = end2 - start2;
         setHeapsortTime(millisecondsElapsed2);
@@ -91,7 +95,7 @@ export default function Page() {
         const millisecondsElapsed3 = end3 - start3;
         setMergesortTime(millisecondsElapsed3);
 
-        //console.log("After Recipe Sorting", recipeRanking);
+        console.log("After Recipe Sorting", rankedRecipes);
         // Finally, display results to the screen
         setRecipes(rankedRecipes);
     }
