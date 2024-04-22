@@ -3,15 +3,7 @@ import styles from './Mergesort.module.css';
 // handle reading in the json results from api calls
 // storing them into an array data structure
 // sorting them with mergesort
-export default function Mergesort({apiResultList}) {
-
-    // store results in array
-    const results = [{
-        "rating": "",
-        "recipeName": "",
-        "diet": [],
-        "health": []
-    }];
+export default function Mergesort(resultList) {
 
     // merges two arrays
     function merge(arr, l, m, r) {
@@ -67,34 +59,6 @@ export default function Mergesort({apiResultList}) {
         merge(arr,l,m,r);
     }
 
-    // set rating function
-    // determine the rating for each recipe
-    // this is the criteria for which the recipes will be sorted
-    const setRating = (root, n) => {
-        // TODO
-        // calculate rating based on how many profiles' criteria it's compatible with
-    }
-
-    // handle reading apiResultList into results
-    for (const recipe of Object.values(apiResultList)) {
-        results.rating.push(setRating);
-        results.recipeName.push(recipe["name"]);
-        results.diet.push(recipe["diet"]);
-        results.health.push(recipe["health"]);
-    }
-
-    // read the sorted results into a display list
-    const resultsDisplayList = results.set(item =
-        <h3>{recipe.recipeName}</h3>
-    );
-
     // return the results displayed in the sorted order
-    return (
-        <div className={styles.resultList}>
-            <div onClick={props.close}>x</div>
-            <h2>Results</h2>
-
-            <ul>{resultsDisplayList}</ul>
-        </div>
-    )
+    return mergeSort(resultList, 0, resultList.length);
 }

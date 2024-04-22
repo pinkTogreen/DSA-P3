@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import AddProfile from "../ui/AddProfile/AddProfile";
 import Profile2 from "../ui/Profile2/Profile2";
 import { getResults } from "../lib/edamam";
+import Heapsort from "../Heapsort/Heapsort";
+import Mergesort from "../Mergesort/Mergesort";
 
 export default function Page() {
     // Used to toggle the form to add a profile.
@@ -27,6 +29,8 @@ export default function Page() {
     // How long it took to generate the results,
     // I couldn't think of a better name
     const [generationTime, setGenerationTime] = useState(null);
+    const [heapsortTime, setHeapsortTime] = useState(null);
+    const [mergesortTime, setMergesortTime] = useState(null);
 
     // For the more/less calories, and more/less ingredients options
     const [moreCalories, setMoreCalories] = useState(true);
@@ -68,16 +72,28 @@ export default function Page() {
     const generateResults = async () => {
         const start = new Date();
         const rankedRecipes = await getResults(profiles, moreCalories, moreIngredients);
-        console.log(rankedRecipes);
-        console.log(rankedRecipes);
+        const end = new Date();
+        const millisecondsElapsed = end - start;
+        setGenerationTime(millisecondsElapsed);
 
         // This is where the sorting would come in.
         // Like we'd sort it by the ranks (second element in the index).
         // To find out more, check the console.log.
+        const start2 = new Date();
+        //Heapsort(rankedRecipes);
+        const end2 = new Date();
+        const millisecondsElapsed2 = end2 - start2;
+        setHeapsortTime(millisecondsElapsed2);
+
+        const start3 = new Date();
+        //Mergesort(rankedRecipes);
+        const end3 = new Date();
+        const millisecondsElapsed3 = end3 - start3;
+        setMergesortTime(millisecondsElapsed3);
+
+        //console.log("After Recipe Sorting", recipeRanking);
+        // Finally, display results to the screen
         setRecipes(rankedRecipes);
-        const end = new Date();
-        const millisecondsElapsed = end - start;
-        setGenerationTime(millisecondsElapsed);
     }
 
     return (
@@ -133,7 +149,9 @@ export default function Page() {
                     <div className={styles.buttonContainer}>
                         <button onClick={setShowAddProfile} className={styles.addButton}><p>Add Profile</p></button>
                         <button onClick={generateResults} className={styles.generateButton}><p>Generate Results</p></button>
-                        {generationTime != null && <span>Took {generationTime}ms</span>}
+                        {generationTime != null && <span>Generated results in {generationTime}ms</span>} <br></br>
+                        {heapsortTime != null && <span>Heapsort in {heapsortTime}ms</span>} <br></br>
+                        {mergesortTime != null && <span>Mergesort in {heapsortTime}ms</span>}
                     </div>
                 </div>
                 {/* Result Section */}

@@ -1,26 +1,20 @@
 import styles from './Heapsort.module.css';
 
-// handle reading in the json results from api calls
-// storing them into an array data structure
-// sorting them with heapsort
-export default function Heapsort({apiResultList}) {
-
-    // store results in array
-    const results = [{
-        "rating": "",
-        "recipeName": "",
-        "diet": [],
-        "health": []
-    }];
+// takes in the array of [recipe objects, rank]
+// sort them inplace with heapsort
+export default function Heapsort(resultList) {
+    console.log("Before Recipe Sorting", resultList);
+    let i = 0;
+    let j = 0;
 
     // heapify down function
     // takes in the root index of the heap and heapifies it down
-    const heapifyDown = (root, n) => {
+    const heapifyDown = (root) => {
         index = root;
         // while the index is not a leaf
-        while (index) {
+        while (true) {
             // check if left child exists and is greater, if so, swap
-            if (2(index) + 1 < n && results[2(index) + 1].rating > results[index]) {
+            if (2(index) + 1 < results.length && results[2(index) + 1][1] > results[index][1]) {
                 // swap
                 temp = results[index];
                 results[index] = results[2(index) + 1];
@@ -29,7 +23,7 @@ export default function Heapsort({apiResultList}) {
                 index = 2(index) + 1;
             }
             // check if right childexists and is greater, if so, swap
-            else if (2(index) + 2 < n && results[2(index) + 2].rating > results[index]) {
+            else if (2(index) + 2 < results.length && results[2(index) + 2][1] > results[index][1]) {
                 // swap
                 temp = results[index];
                 results[index] = results[2(index) + 2];
@@ -47,10 +41,10 @@ export default function Heapsort({apiResultList}) {
     // heapify function
     // takes in an array and turns it into a max heap
     // by calling heapify down on all internal nodes (floor(n/2) to n-1) in reverse level order
-    const heapify = (n) => {
+    const heapify = () => {
         // call heapify down on all internal nodes in reverse level order
-        for (i = floor(n/2) - 1; i >=0; i--) {
-            heapifyDown(i,n);
+        for (let j = (results.length / 2) - 1; j >= 0; j--) {
+            heapifyDown(j,n);
         }
     }
 
@@ -71,44 +65,17 @@ export default function Heapsort({apiResultList}) {
     // then extract max on all elements
     // the array is then sorted in place
     const heapsort = () => {
-        n = results.length();   // how many recipes in results
-        heapify(n);
+        let n = results.length;   // how many recipes in results
+        heapify();
         // extract max on all elements, update n during process
-        for (i = 0; i < results.length(); i++) {
+        for (let i = 0; i < results.length(); i++) {
             extractMax(n);
-            n--;    //decrement n
+            n = n - 1;    //decrement n
         }
-        
     }
 
-    // set rating function
-    // determine the rating for each recipe
-    // this is the criteria for which the recipes will be sorted
-    const setRating = (root, n) => {
-        // TODO
-        // calculate rating based on how many profiles' criteria it's compatible with
-    }
-
-    // handle reading apiResultList into results
-    for (const recipe of Object.values(apiResultList)) {
-        results.rating.push(setRating);
-        results.recipeName.push(recipe["name"]);
-        results.diet.push(recipe["diet"]);
-        results.health.push(recipe["health"]);
-    }
-
-    // read the sorted results into a display list
-    const resultsDisplayList = results.set(item =
-        <h3>{recipe.recipeName}</h3>
-    );
-
+    var results = resultList;
+    heapsort();
     // return the results displayed in the sorted order
-    return (
-        <div className={styles.resultList}>
-            <div onClick={props.close}>x</div>
-            <h2>Results</h2>
-
-            <ul>{resultsDisplayList}</ul>
-        </div>
-    )
+    return results;
 }
